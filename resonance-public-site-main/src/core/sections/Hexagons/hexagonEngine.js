@@ -24,9 +24,15 @@ const chance = new Chance(Date.now())
 let currentColorImageIndex = 0
 let currentGrayscaleImageIndex = 0
 
-const defaultActiveItems = Object.values(overlayTypes).map((type) => type.word)
+const defaultActiveItems = Object.values(overlayTypes).map((type) =>{
+  return{
+    word:type.word,
+    hexagonWord:type.hexagonWord
+  }
+ })
 const getActiveItems = () => defaultActiveItems.map((item) => ({
-  copy: item,
+  copy: item.word,
+  hexagonWord:item.hexagonWord,
   spring: new SpringValue(0, { config: { tension: 65 } }),
 }))
 
@@ -264,6 +270,7 @@ export class HexagonEngine {
           position: { x: hexCenterX, y: hexCenterY },
           loadRange,
           copy: currentActiveItem?.copy,
+          hexagonWord:currentActiveItem?.hexagonWord,
           image: currentImage,
           activeItem: currentActiveItem,
           activeItemIndex: currentActiveItem ? currentActiveItemIndex - 1 : null,
@@ -375,6 +382,7 @@ export class HexagonEngine {
   onActiveItemClick(hexIndex) {
     if (this.paused) return
     if (this.setActiveItemClicked) {
+      console.log(this.hexagons[hexIndex])
       this.setActiveItemClicked(this.hexagons[hexIndex].activeItem.copy)
     }
     this.paused = true
@@ -431,10 +439,11 @@ export class HexagonEngine {
   }
 
   get hexData() {
-    return this.hexagons.map(({ ref, key, copy, image, onClick, activeItemIndex }) => ({
+    return this.hexagons.map(({ ref, key, copy,hexagonWord, image, onClick, activeItemIndex }) => ({
       ref,
       key,
       copy,
+      hexagonWord,
       image,
       onClick,
       width: this.hexWidth - this.hexGap - this.hexStroke,
