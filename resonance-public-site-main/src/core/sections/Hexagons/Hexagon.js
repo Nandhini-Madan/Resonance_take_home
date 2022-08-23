@@ -54,7 +54,7 @@ const Hexagon = forwardRef(({ width, copy, image, onClick, activeItemIndex }, re
           <svg
             viewBox="0 0 100 86.65"
             className="
-              absolute-center pointer-events-auto h-full w-full text-foreground
+              absolute-center pointer-events-auto h-full w-full text-aquamarine
               transition-colors duration-500 ease-ease
             "
           >
