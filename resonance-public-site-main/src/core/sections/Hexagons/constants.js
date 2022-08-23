@@ -47,21 +47,25 @@ export const INFINITE = 'Infinite'
 export const overlayTypes = {
   creation: {
     word: 'creation',
+    hexagonWord:'No Inventory. No Waste',
     copy: 'at zero cost.',
     component: CreationAnimation,
   },
   connection: {
     word: 'connection',
+    hexagonWord:'Transparently Sustainable',
     copy: 'with customers.',
     component: ConnectionAnimation,
   },
   scale: {
     word: 'scale',
+    hexagonWord:'The Newness Engine',
     copy: 'with zero inventory.',
     component: ScaleAnimation,
   },
   flexibility: {
     word: 'flexibility',
+    hexagonWord:'Do Well and Do Good',
     copy: 'to react in real time.',
     component: FlexibilityAnimation,
   },

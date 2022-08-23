@@ -3,26 +3,26 @@ import { classNames } from 'lib/utils/classNames'
 import Image from 'next/image'
 import React, { forwardRef } from 'react'
 
-const Hexagon = forwardRef(({ width, copy, image, onClick, activeItemIndex }, ref) => (
+const Hexagon = forwardRef(({ width, hexagonWord, image, onClick, activeItemIndex }, ref) => (
   <div className="hex-wrapper top-0 left-0" ref={ref} onClick={onClick}>
     <div
       className={classNames(
         'w-full h-full',
-        copy && 'hover:animate-[hexpulse_0.75s_ease-in]',
+        hexagonWord && 'hover:animate-[hexpulse_0.75s_ease-in]',
       )}
     >
       <div
         className={classNames(
           'relative w-full h-full',
           image && 'hex overflow-hidden bg-gray bg-opacity-30',
-          copy && `
+          hexagonWord && `
             text-background hover:text-yellow text-center hover:cursor-pointer
             animate-[hexpulse_0.75s_ease-in]
           `,
         )}
         style={{ animationDelay: `${1500 + activeItemIndex * 250}ms` }}
       >
-        {!!copy && (
+        {!!hexagonWord && (
           <span
             className="
             absolute-center font-bold z-10
@@ -39,8 +39,8 @@ const Hexagon = forwardRef(({ width, copy, image, onClick, activeItemIndex }, re
                 transition-colors duration-500 ease-ease
               "
             >
-              <Mark className="inline relative mr-1 w-[0.8em]" />
-              {copy}
+              
+              {hexagonWord}
             </span>
           </span>
         )}
